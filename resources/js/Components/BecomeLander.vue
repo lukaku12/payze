@@ -5,11 +5,11 @@
     </button>
 
     <div @click="closeModal" v-if="showModal"
-         class="absolute w-screen h-screen bg-[rgba(0,0,0,0.6)] top-0 left-0 !ml-0 z-40">
+         class="fixed w-screen h-screen bg-[rgba(0,0,0,0.6)] top-0 left-0 !ml-0 z-40">
     </div>
     <div
         v-if="showModal"
-        class="absolute max-w-[700px] top-1/2 left-1/2 w-[80%] py-16 -translate-x-1/2 z-50 -translate-y-1/2 flex flex-col items-center border border-2 border-purple-600 bg-white rounded-xl">
+        class="fixed max-w-[700px] top-1/2 left-1/2 w-[80%] py-16 -translate-x-1/2 z-50 -translate-y-1/2 flex flex-col items-center border border-2 border-purple-600 bg-white rounded-xl">
         <div class="mt-4 w-3/4">
             <InputLabel for="card_name" value="ბარათის სახელი"/>
             <TextInput id="card_name" type="text" class="mt-1 block w-full border border-black" v-model="card.name" required placeholder="Soul Goodman"
