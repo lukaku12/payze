@@ -11,7 +11,7 @@ const page = usePage();
 const loans = computed(function () {
     return page.props.value.loans;
 });
-console.log(loans.value);
+
 </script>
 
 <template>
