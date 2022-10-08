@@ -20,6 +20,8 @@ return new class extends Migration
             $table->tinyInteger('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid')->default(0);
             $table->float('demanded_interest_rate');
             $table->bigInteger('amount');
+            $table->integer('currency');
+            $table->timestamp('payment_due_date');
             $table->timestamps();
             $table->softDeletes();
         });
