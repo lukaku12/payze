@@ -22,6 +22,7 @@ return new class extends Migration
             $table->integer('left_base_amount_to_pay');
             $table->integer('left_interest_amount_to_pay');
             $table->timestamp('payment_due_date');
+            $table->integer('currency');
             $table->timestamps();
             $table->softDeletes();
         });
