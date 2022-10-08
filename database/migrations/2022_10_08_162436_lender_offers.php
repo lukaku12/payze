@@ -13,15 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('lender_offers', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->boolean('is_lender');
-            $table->integer('reputation');
-            $table->rememberToken();
+            $table->foreignId('loan_id')->constrained('loans');
+            $table->float('offered_interest_rate');
+            $table->integer('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid');
+            $table->integer('offered_amount');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -34,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        //
     }
 };
