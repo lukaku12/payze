@@ -11,7 +11,7 @@
         v-if="showModal"
         class="absolute max-w-[700px] top-1/2 left-1/2 w-[80%] py-16 -translate-x-1/2 z-50 -translate-y-1/2 flex flex-col items-center border border-2 border-purple-600 bg-white rounded-xl">
         <div class="mt-4 w-3/4">
-            <InputLabel for="card_name" value="Card Name"/>
+            <InputLabel for="card_name" value="ბარათის სახელი"/>
             <TextInput id="card_name" type="text" class="mt-1 block w-full border border-black" v-model="card.name" required placeholder="Soul Goodman"
                        autocomplete="card_name"/>
             <InputError class="mt-2" :message="card.name"/>
