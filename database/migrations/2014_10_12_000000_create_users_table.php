@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->boolean('is_lender');
-            $table->integer('reputation');
+            $table->boolean('is_lender')->default(false);
+            $table->integer('reputation')->default(500);
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

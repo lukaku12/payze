@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->string('card_token');
+            $table->string('card_name');
+            $table->integer('card_status')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

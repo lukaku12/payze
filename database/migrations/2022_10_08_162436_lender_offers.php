@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('loan_id')->constrained('loans');
             $table->float('offered_interest_rate');
-            $table->integer('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid');
+            $table->integer('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid')->default(0);
             $table->integer('offered_amount');
             $table->timestamps();
             $table->softDeletes();

@@ -4,11 +4,16 @@
         გახდი გამსესხებელი
     </button>
 
-    <div v-if="showModal" class="absolute top-1/2 left-1/2 w-[50%] h-[70%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center border border-2 bg-emerald-500 rounded-xl">
+    <div @click="closeModal" v-if="showModal" class="absolute w-screen h-screen bg-[rgba(0,0,0,0.6)] top-0 left-0 !ml-0 z-40">
+    </div>
+    <div
+        v-if="showModal"
+        class="absolute top-1/2 left-1/2 w-[50%] h-[70%] -translate-x-1/2 z-50 -translate-y-1/2 flex flex-col items-center border border-2 bg-emerald-500 rounded-xl">
         <div class="mt-4  w-3/4">
-            <InputLabel for="TODO" value="TODO" />
-            <TextInput id="TODO" type="text" class="mt-1 block w-full" v-model="card.name" required autocomplete="current-password" />
-            <InputError class="mt-2" :message="card.name" />
+            <InputLabel for="TODO" value="TODO"/>
+            <TextInput id="TODO" type="text" class="mt-1 block w-full" v-model="card.name" required
+                       autocomplete="current-password"/>
+            <InputError class="mt-2" :message="card.name"/>
         </div>
     </div>
 </template>
@@ -18,6 +23,7 @@
 import InputLabel from "@/Components/InputLabel.vue";
 import TextInput from "@/Components/TextInput.vue";
 import InputError from "@/Components/InputError.vue";
+
 export default {
     components: {TextInput, InputLabel, InputError},
 
@@ -35,6 +41,9 @@ export default {
     methods: {
         openModal() {
             this.showModal = true;
+        },
+        closeModal() {
+            this.showModal = false;
         }
     }
 }

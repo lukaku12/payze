@@ -16,8 +16,8 @@ return new class extends Migration
         Schema::create('loans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('receiver_id')->constrained('users');
-            $table->foreignId('lender_id')->constrained('users');
-            $table->tinyInteger('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid');
+            $table->foreignId('lender_id')->nullable()->constrained('users');
+            $table->tinyInteger('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid')->default(0);
             $table->float('demanded_interest_rate');
             $table->bigInteger('amount');
             $table->timestamps();
