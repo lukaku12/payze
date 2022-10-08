@@ -27,7 +27,7 @@ Route::middleware('auth:sanctum')->post('/loans/create', function (Request $requ
     $validated['id'] = 2;
     return $validated;
 });
-Route::middleware('auth:sanctum')->post('/loans/offer/create', function (Request $request) {
+Route::post('/loans/offer/create', function (Request $request) {
     return $validated = $request->validate([
         'loan_id' => 'required',
         'offered_amount' => 'required',
@@ -37,13 +37,14 @@ Route::middleware('auth:sanctum')->post('/loans/offer/create', function (Request
     ]);
 });
 Route::middleware('auth:sanctum')->get('/loans/offer/accept/:id', function (Request $request) {
-    return $request->all();
+    return ;
 });
 Route::middleware('auth:sanctum')->get('/loans/offer/reject/:id', function (Request $request) {
     return $request->all();
 });
 Route::middleware('auth:sanctum')->get('/pending/loans', function (Request $request) {
-    return [[
+    return [
+        [
         'id' => 1,
         'status' => 0,
         'demanded_interest_rate' => 23.42,
