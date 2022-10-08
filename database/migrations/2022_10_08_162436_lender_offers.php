@@ -16,9 +16,11 @@ return new class extends Migration
         Schema::create('lender_offers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('loan_id')->constrained('loans');
+            $table->foreignId('lender_id')->constrained('users');
             $table->float('offered_interest_rate');
             $table->integer('status')->comment('0 = pending; 1 = active; 2 = rejected; 3 = paid')->default(0);
             $table->integer('offered_amount');
+            $table->timestamp('payment_due_date');
             $table->timestamps();
             $table->softDeletes();
         });
