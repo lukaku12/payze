@@ -10,10 +10,16 @@ class DashboardController extends Controller
 
     public function index(): \Inertia\Response
     {
-        $data = require '../../../config/fakeData.php';
+        $data = json_decode(file_get_contents('../config/fakeData.php'),TRUE);;
+
         $loans = $data['loans'];
         $myOffers = $data['myoffers'];
-        return Inertia::render('Dashboard',['loans' => $loans,'myOffers' => $myOffers]);
+        $pendingLoans = $data['pendingLoans'];
+        return Inertia::render('Dashboard',[
+            'loans' => $loans,
+            'myOffers' => $myOffers,
+            'pendingLoans' => $pendingLoans
+        ]);
     }
     //
 }
