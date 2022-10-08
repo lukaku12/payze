@@ -13,7 +13,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
@@ -36,36 +35,31 @@ Route::post('/loans/offer/create', function (Request $request) {
         'demanded_interest_rate' => 'required',
     ]);
 });
-Route::middleware('auth:sanctum')->get('/loans/offer/accept/:id', function (Request $request) {
-    return ;
+Route::middleware('auth:sanctum')->get('/loans/offer/accept/:id', function ($id) {
+    $ConfigData = require ('../config/fakeData.php');
+    foreach ($ConfigData['loans'] as $key => $value) {
+        if($value['id']== $id) {
+            $value['status'] = 1;
+            return ['status' => true, 'loan' => $value];
+        }
+    };
+    return ['status' => false];
 });
-Route::middleware('auth:sanctum')->get('/loans/offer/reject/:id', function (Request $request) {
-    return $request->all();
+Route::middleware('auth:sanctum')->get('/loans/offer/reject/{id}', function ($id) {
+    $ConfigData = require ('../config/fakeData.php');
+    foreach ($ConfigData['loans'] as $key => $value) {
+        if($value['id']== $id) {
+            $value['status'] = 2;
+            return ['status' => true, 'loan' => $value];
+        }
+    }
+    return ['status' => false];
 });
 Route::middleware('auth:sanctum')->get('/pending/loans', function (Request $request) {
-    return [
-        [
-        'id' => 1,
-        'status' => 0,
-        'demanded_interest_rate' => 23.42,
-        'amount' => 500,
-        'lender' => null,
-        'payment_due_date' => '12/23/2022',]
-    ];
+    $ConfigData = require ('../config/fakeData.php');
+    return $ConfigData['pendingLoans'];
 });
 Route::middleware('auth:sanctum')->get('/myoffers', function (Request $request) {
-    return [
-        'id' => 1,
-        'status' => 0,
-        'demanded_interest_rate' => 23.42,
-        'amount' => 500,
-        'demand_loan' => [
-            'demanded_interest_rate' => 23.42,
-            'amount' => 500,
-            'payment_due_date' => '12/23/2022',
-            'user' => 'davit'
-        ],
-        'lender' => null,
-        'payment_due_date' => '12/23/2022',
-    ];
+    $ConfigData = require ('../config/fakeData.php');
+    return $ConfigData['myOffers'];
 });
