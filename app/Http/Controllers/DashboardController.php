@@ -11,7 +11,6 @@ class DashboardController extends Controller
     public function index(): \Inertia\Response
     {
         $data = json_decode(file_get_contents('../config/fakeData.php'),TRUE);;
-
         $loans = $data['loans'];
         $myOffers = $data['myoffers'];
         $max_limit = 400;

@@ -28,8 +28,11 @@ const showingNavigationDropdown = ref(false);
 
                             <!-- Navigation Links -->
                             <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex justify-between sm:w-full">
-                                <NavLink :href="route('dashboard')" :active="route().current('dashboard')">
+                                <NavLink :href="route('dashboard',{page : 1})" :active="route().current('dashboard')">
                                     სამუშაო დაფა
+                                </NavLink>
+                                <NavLink :href="route('dashboard',{page : 2})" :active="route().current('dashboard')">
+                                    გამსესხებლის გარემო
                                 </NavLink>
                                 <become-lander />
                             </div>
